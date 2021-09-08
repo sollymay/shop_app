@@ -18,6 +18,7 @@ class CartScreen extends StatelessWidget {
           itemCount: cart.itemCount,
           itemBuilder: (ctx, i) => CartItem(
               cart.items.values.toList()[i].id,
+              cart.items.keys.toList()[i],
               cart.items.values.toList()[i].price,
               cart.items.values.toList()[i].quantity,
               cart.items.values.toList()[i].title),
@@ -25,34 +26,40 @@ class CartScreen extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        Card(
-          margin: EdgeInsets.all(15.0),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total',
-                  style: TextStyle(fontSize: 20),
-                ),
-                Spacer(),
-                Chip(
-                  label: Text(
-                    '\$${cart.totalAmount}',
-                    style: TextStyle(
-                        color:
-                            Theme.of(context).primaryTextTheme.headline6.color),
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 15, bottom: 17, left: 7.5, right: 7.5),
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 10, right: 8, left: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total',
+                    style: TextStyle(fontSize: 20),
                   ),
-                  backgroundColor: Theme.of(context).primaryColor,
-                ),
-                TextButton(
-                  child: Text('ORDER NOW'),
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                      primary: Theme.of(context).primaryColor),
-                ),
-              ],
+                  Spacer(),
+                  Chip(
+                    label: Text(
+                      '\$${cart.totalAmount}',
+                      style: TextStyle(
+                          color: Theme.of(context)
+                              .primaryTextTheme
+                              .headline6
+                              .color),
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                  TextButton(
+                    child: Text('ORDER NOW'),
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                        primary: Theme.of(context).primaryColor),
+                  ),
+                ],
+              ),
             ),
           ),
         )
