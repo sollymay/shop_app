@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:provider/provider.dart';
 import '../providers/cart_prodiver.dart';
 
@@ -46,15 +48,32 @@ class CartItem extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(8),
           child: ListTile(
-            leading: CircleAvatar(
-                child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: FittedBox(child: Text('\$$price')),
-            )),
-            title: Text(title),
-            subtitle: Text('Total: \$${price * quantity}'),
-            trailing: Text('$quantity x'),
-          ),
+              leading: CircleAvatar(
+                  child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: FittedBox(child: Text('\$$price')),
+              )),
+              title: Text(title),
+              subtitle: Text('Total: \$${price * quantity}'),
+              trailing: Container(
+                child: TextField(
+                  onSubmitted: (text) {
+                    if (text.isNotEmpty) {
+                      Provider.of<Cart>(context, listen: false)
+                          .updateItem(productId, price, title, int.parse(text));
+                    } else {
+                      Provider.of<Cart>(context, listen: false)
+                          .updateItem(productId, price, title, 0);
+                    }
+                  },
+                  controller: TextEditingController(text: quantity.toString()),
+                  textAlign: TextAlign.center,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                  ],
+                ),
+                width: MediaQuery.of(context).size.width * 0.07,
+              )),
         ),
       ),
     );
