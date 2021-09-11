@@ -15,15 +15,21 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(children: [
         Expanded(
-            child: ListView.builder(
-          itemCount: cart.itemCount,
-          itemBuilder: (ctx, i) => CartItem(
-              cart.items.values.toList()[i].id,
-              cart.items.keys.toList()[i],
-              cart.items.values.toList()[i].price,
-              cart.items.values.toList()[i].quantity,
-              cart.items.values.toList()[i].title),
-        )),
+            child: (cart.itemCount == 0)
+                ? Center(
+                    child: Text(
+                    'There\'s nothing in your cart',
+                    style: TextStyle(fontSize: 25),
+                  ))
+                : ListView.builder(
+                    itemCount: cart.itemCount,
+                    itemBuilder: (ctx, i) => CartItem(
+                        cart.items.values.toList()[i].id,
+                        cart.items.keys.toList()[i],
+                        cart.items.values.toList()[i].price,
+                        cart.items.values.toList()[i].quantity,
+                        cart.items.values.toList()[i].title),
+                  )),
         SizedBox(
           height: 10,
         ),
@@ -44,7 +50,7 @@ class CartScreen extends StatelessWidget {
                   Spacer(),
                   Chip(
                     label: Text(
-                      '\$${cart.totalAmount}',
+                      '\$${cart.totalAmount.toStringAsFixed(2)}',
                       style: TextStyle(
                           color: Theme.of(context)
                               .primaryTextTheme
