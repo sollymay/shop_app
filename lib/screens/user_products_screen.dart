@@ -14,6 +14,7 @@ class UserProductsScreen extends StatelessWidget {
       drawer: AppDrawer(),
       appBar: AppBar(
         title: Text('Your Products'),
+        
         actions: [
           IconButton(
             onPressed: () {
