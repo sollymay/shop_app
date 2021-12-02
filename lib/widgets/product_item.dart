@@ -36,7 +36,7 @@ class ProductItem extends StatelessWidget {
             onPressed: () {
               product.toggleFavoriteSatus();
             },
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -57,7 +57,7 @@ class ProductItem extends StatelessWidget {
                     }),
               ));
             },
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           backgroundColor: Colors.black87,
           title: Text(
