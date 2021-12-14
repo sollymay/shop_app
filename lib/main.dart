@@ -12,6 +12,7 @@ import './providers/products_provider.dart';
 import './providers/cart_prodiver.dart';
 
 void main() => runApp(MyApp());
+final ThemeData theme = ThemeData();
 
 class MyApp extends StatelessWidget {
   @override
@@ -30,11 +31,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'MyShop',
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          colorScheme:
-              ColorScheme(secondary: Colors.deepOrange, primary: Colors.purple),
-          fontFamily: 'Lato',
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme
+              .copyWith(secondary: Colors.deepOrange, primary: Colors.purple),
         ), // TODO: test this
         home: ProductOverviewScreen(),
         routes: {
