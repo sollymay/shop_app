@@ -30,6 +30,7 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
+
           leading: IconButton(
             icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border),

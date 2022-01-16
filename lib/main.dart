@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: theme.copyWith(
           colorScheme: theme.colorScheme
               .copyWith(secondary: Colors.deepOrange, primary: Colors.purple),
-        ), // TODO: test this
+        ),
         home: ProductOverviewScreen(),
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
@@ -47,3 +47,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

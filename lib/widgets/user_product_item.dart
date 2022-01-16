@@ -28,7 +28,7 @@ class UserProductItem extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.edit,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 )),
             IconButton(
               onPressed: () {
