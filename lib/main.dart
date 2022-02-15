@@ -32,8 +32,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'MyShop',
         theme: theme.copyWith(
-          colorScheme: theme.colorScheme
-              .copyWith(secondary: Colors.deepOrange, primary: Colors.purple),
+          colorScheme: theme.colorScheme.copyWith(
+            secondary: Colors.deepOrange,
+            primary: Colors.purple,
+          ),
         ),
         home: ProductOverviewScreen(),
         routes: {
@@ -47,4 +49,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
