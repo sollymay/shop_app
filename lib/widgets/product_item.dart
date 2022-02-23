@@ -12,6 +12,7 @@ class ProductItem extends StatelessWidget {
   //ProductItem({this.id, this.title, this.imageUrl});
   @override
   Widget build(BuildContext context) {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
     final product = Provider.of<Product>(context);
     final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
@@ -30,12 +31,22 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-
           leading: IconButton(
             icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              product.toggleFavoriteSatus();
+            onPressed: () async {
+              try {
+                await product.toggleFavoriteStatus();
+              } catch (error) {
+                scaffoldMessenger.showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Toggling Favorite Failed',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
             },
             color: Theme.of(context).colorScheme.secondary,
           ),
