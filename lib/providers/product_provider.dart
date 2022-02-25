@@ -26,14 +26,11 @@ class Product with ChangeNotifier {
     notifyListeners();
     final response = await http.patch(url,
         body: json.encode({
-          'title': title,
-          'description': description,
-          'imageUrl': imageUrl,
-          'price': price,
           'isFavorite': isFavorite,
         }));
     if (response.statusCode >= 400) {
       isFavorite = !isFavorite;
+      notifyListeners();
       throw HttpException('Could not toggle Favorite');
     }
   }
