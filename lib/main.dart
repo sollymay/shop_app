@@ -3,11 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/providers/order_provider.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 import './screens/cart_screen.dart';
-import './screens/product_overview_screen.dart';
-import './screens/product_detail_screen.dart';
 import './screens/orders_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/user_products_screen.dart';
+import './screens/auth_screen.dart';
 import './providers/products_provider.dart';
 import './providers/cart_prodiver.dart';
 
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
             primary: Colors.purple,
           ),
         ),
-        home: ProductOverviewScreen(),
+        home: AuthScreen(),
         routes: {
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
           CartScreen.routeName: (ctx) => CartScreen(),
