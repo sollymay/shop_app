@@ -54,7 +54,7 @@ class CartScreen extends StatelessWidget {
                       style: TextStyle(
                           color: Theme.of(context)
                               .primaryTextTheme
-                              .headline6
+                              .titleLarge
                               .color),
                     ),
                     backgroundColor: Theme.of(context).primaryColor,
@@ -103,7 +103,8 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clearCart();
             },
-      style: TextButton.styleFrom(primary: Theme.of(context).primaryColor),
+      style:
+          TextButton.styleFrom(foregroundColor: Theme.of(context).primaryColor),
     );
   }
 }

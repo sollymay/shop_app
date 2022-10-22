@@ -59,7 +59,7 @@ class CartItem extends StatelessWidget {
           horizontal: 15,
           vertical: 4,
         ),
-        color: Theme.of(context).errorColor,
+        color: Theme.of(context).colorScheme.error,
       ),
       child: Card(
         margin: EdgeInsets.symmetric(
