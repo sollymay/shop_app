@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({
-    Key key,
-    @required this.child,
-    @required this.value,
-    this.color,
+class CustomBadge extends StatelessWidget {
+  const CustomBadge({
+    Key? key,
+    required this.child,
+    required this.value,
+    this.color = Colors.blue,
   }) : super(key: key);
 
   final Widget child;
@@ -26,6 +26,7 @@ class Badge extends StatelessWidget {
             //color: Theme.of(context).colorScheme.secondary,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
+              // ignore: unnecessary_null_comparison
               color: color != null
                   ? color
                   : Theme.of(context).colorScheme.secondary,

@@ -41,8 +41,8 @@ class Products with ChangeNotifier {
   ];
 
   //var _showFavoritesOnly = false;
-  final String authToken;
-  final String userId;
+  final String? authToken;
+  final String? userId;
   Products(this.authToken, this.userId, this._items);
   List<Product> get items {
     //if (_showFavoritesOnly) {
@@ -76,7 +76,7 @@ class Products with ChangeNotifier {
         'https://shop-app-609e8-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
     try {
       final response = await http.get(url);
-      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      final extractedData = json.decode(response.body) as Map<String, dynamic>?;
       if (extractedData == null) {
         return;
       }
@@ -158,7 +158,7 @@ class Products with ChangeNotifier {
     final url = Uri.parse(
         'https://shop-app-609e8-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken');
     final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
-    var existingProduct = _items[existingProductIndex];
+    Product? existingProduct = _items[existingProductIndex];
     _items.removeAt(existingProductIndex);
     notifyListeners();
     final response = await http.delete(url);
