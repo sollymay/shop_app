@@ -26,8 +26,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
   var _isInit = true;
   var _isLoading = false;
   var _initValues = {
-    'title': '',
     'description': '',
+    'title': '',
     'price': '',
     'imageUrl': '',
   };
@@ -81,7 +81,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     setState(() {
       _isLoading = true;
     });
-    if (_editedProduct.id != null) {
+    if (_editedProduct.id != '') {
       await Provider.of<Products>(context, listen: false)
           .updateProduct(_editedProduct.id, _editedProduct);
     } else {
@@ -212,7 +212,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         if (value!.isEmpty) {
                           return 'Please provide a value';
                         }
-                        if (value!.length < 10) {
+                        if (value.length < 10) {
                           return 'Description should be at least 10 characters';
                         }
                         return null;

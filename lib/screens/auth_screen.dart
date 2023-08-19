@@ -121,7 +121,7 @@ class _AuthCardState extends State<AuthCard>
     );
     _opacityAnimation = Tween(begin: 0.0, end: 1.0)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
-    _slideAnimation?.addListener(() => setState(() {}));
+    _slideAnimation.addListener(() => setState(() {}));
   }
 
   @override
@@ -228,7 +228,7 @@ class _AuthCardState extends State<AuthCard>
                   decoration: InputDecoration(labelText: 'E-Mail'),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if (value!.isEmpty || !value!.contains('@')) {
+                    if (value!.isEmpty || !value.contains('@')) {
                       return 'Invalid email!';
                     }
                     return null;
